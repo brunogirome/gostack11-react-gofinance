@@ -10,6 +10,8 @@ import Header from '../../components/Header';
 
 import formatValue from '../../utils/formatValue';
 
+import formatDate from '../../utils/formatDate';
+
 import { Container, CardContainer, Card, TableContainer } from './styles';
 
 interface Transaction {
@@ -94,11 +96,11 @@ const Dashboard: React.FC = () => {
                 <tr key={transaction.id}>
                   <td className="title">{transaction.title}</td>
                   <td className={transaction.type}>
-                    {transaction.type === 'outcome' ? '-' : null}
+                    {transaction.type === 'outcome' ? '- ' : null}
                     {formatValue(transaction.value)}
                   </td>
                   <td>{transaction.category.title}</td>
-                  <td>{transaction.created_at}</td>
+                  <td>{formatDate(new Date(transaction.created_at))}</td>
                 </tr>
               ))}
             </tbody>
